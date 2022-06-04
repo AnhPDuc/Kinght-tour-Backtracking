@@ -8,14 +8,20 @@ namespace ChessBoardModel
 {
     public class KnightMove
     {
-        public int[,] Result = new int[64, 2];//chứa đường đi của Knight
+        //chứa kết quả đường đi của quân mã sau khi thực hiện giải thuật backtracking
+        public int[,] Result = new int[64, 2];
 
-        public int[] MoveX = new int[8];// 0->X
+        //Chứa đường của quân mã có thể đi trên bàn cờ
+        public int[] MoveX = new int[8];
         public int[] MoveY = new int[8];
 
+        //Tạo bàn cờ
         public int[,] Table = new int[8, 8];
+
+        //Đếm số ô quân mã đã đi trên bàn cờ
         public int count = 0;
 
+        //Khởi tạo các đường đi quân mã có thể đi trên bàn cờ
         public KnightMove()
         {
             //X={ -2,-2,-1,-1, 1, 1, 2, 2}
@@ -38,6 +44,7 @@ namespace ChessBoardModel
             MoveY[6] = -1;
             MoveY[7] = 1;
         }
+        //Tạo bàn cờ
         public void CreateTable()
         {
             for (int i = 0; i < 8; i++)
@@ -48,11 +55,18 @@ namespace ChessBoardModel
                 }
             }
         }
+
+        //Tìm đường đi của quân mã bằng giải thuật backtracking
         public void FindWay(int x, int y)
         {
+            //Lưu bước đi vào 
             Result[count , 0] = x;
             Result[count , 1] = y;
-            count++;//Tăng giá trị bước đi
+
+            //Tăng giá trị bước đi
+            count++;
+
+            //Lưu bước vừa đi vào bàn cờ
             Table[x,y] = count;
             for (int i = 0; i < 8; i++)
             {

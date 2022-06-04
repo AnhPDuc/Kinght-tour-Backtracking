@@ -25,10 +25,15 @@ namespace ChessBoardModel
                 }
             }
         }
-        public void MarkNextLegalMoves(Cell currentCell,int x,int y)
+        public void MarkNextMoves(Cell currentCell,int x,int y)
         {
+            //Tạo biến count
             Knight.count = 0;
+
+            //Tạo bàn cờ
             Knight.CreateTable();
+
+            //Tìm đường đi cho quân mã
             Knight.FindWay(x, y);
         }
 
